@@ -1,0 +1,54 @@
+<div class="content">
+  <form>
+    <label class="title">Solicitud</label>
+    
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Seleccione el empleado</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option *ngFor="let empleado of empleados">{{ empleado }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Seleccione el cliente</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option *ngFor="let cliente of clientes">{{ cliente }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ingrese el monto</label>
+      <input class="form-control" type="number" placeholder="Digite el monto" step="0.10" min="0" value="0"/>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1">Fecha De Ingreso</label>
+      <input
+        class="form-control"
+        type="text"
+        [(ngModel)]="today"
+        name="date"
+        readonly
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Ingrese la tasa (%)</label>
+      <input class="form-control" type="number" placeholder="Digite el monto" step="0.10" min="0" value="0"/>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Seleccione el periodo</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option *ngFor="let periodo of periodos">{{ periodo }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Cantidad de periodo</label>
+      <input class="form-control" type="number" placeholder="Digite la cantidad" step="1" min="0" value="0"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+  </form>
+</div>

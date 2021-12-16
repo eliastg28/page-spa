@@ -10,7 +10,7 @@ export class TaskService {
     throw new Error('Method not implemented.');
   }
 
-  api = 'https://7d44-190-237-30-212.ngrok.io/apiTest/loans.php'
+  api = 'http://085c-2001-1388-26a1-a295-464-78ba-b5cc-2096.ngrok.io/api/prestamos'
   apiPerson = 'https://consulta.api-peru.com/api/dni/';
 
   constructor(private http: HttpClient) { }
@@ -39,7 +39,7 @@ export class TaskService {
   }
 
   sendEmail(demand: Demand){
-    const pathEmail = `AQUÍ VA EL PATH PARA MANDAR CORREOS`;
+    const pathEmail = 'https://service-email.herokuapp.com/send';
     return this.http.post<Demand>(pathEmail, demand, this.httpOptions);
   }
 

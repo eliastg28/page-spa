@@ -65,13 +65,13 @@ export class FormComponent implements OnInit {
   // }
 
   dni: any = '';
-  nombres: any;
+  nombre: any;
   apellidos: any;
-  telefono: any;
-  correo: any;
+  phone: any;
+  email: any;
   monto: any;
   periodo: any;
-  cuotas: any;
+  cantidadPeriodo: any;
 
   person: any;
 
@@ -86,14 +86,14 @@ export class FormComponent implements OnInit {
         this.person = data;
         if (!this.person.success) {
           this.alert(' ', 'El DNI dado no pertenece a ninguna persona', 3);
-          this.nombres = undefined;
+          this.nombre = undefined;
           this.apellidos = undefined;
           this.dni = undefined;
           this.hideSpinner();
         } else {
           // console.log('Si hay data');
           // console.log(this.person);
-          this.nombres = this.person.data.nombres;
+          this.nombre = this.person.data.nombres;
           this.apellidos =
             this.person.data.apellido_paterno +
             ' ' +
@@ -102,7 +102,7 @@ export class FormComponent implements OnInit {
         }
       });
     } else {
-      this.nombres = undefined;
+      this.nombre = undefined;
       this.apellidos = undefined;
       // console.log('Hola');
     }
@@ -111,44 +111,44 @@ export class FormComponent implements OnInit {
   createDemand() {
     const demand = {
       dni: this.dni,
-      nombres: this.nombres,
+      nombre: this.nombre,
       apellidos: this.apellidos,
-      telefono: this.telefono,
-      correo: this.correo,
+      phone: this.phone,
+      email: this.email,
       monto: this.monto,
       periodo: this.periodo,
-      cuotas: this.cuotas,
+      cantidadPeriodo: this.cantidadPeriodo,
     };
 
     if (
       this.dni === undefined ||
       this.dni === null ||
-      this.nombres === undefined ||
-      this.nombres === null ||
+      this.nombre === undefined ||
+      this.nombre === null ||
       this.apellidos === undefined ||
       this.apellidos === null ||
-      this.telefono === undefined ||
-      this.telefono === null ||
-      this.correo === undefined ||
-      this.correo === null ||
+      this.phone === undefined ||
+      this.phone === null ||
+      this.email === undefined ||
+      this.email === null ||
       this.monto === undefined ||
       this.monto === null ||
       this.periodo === undefined ||
       this.periodo === null ||
-      this.cuotas === undefined ||
-      this.cuotas === null
+      this.cantidadPeriodo === undefined ||
+      this.cantidadPeriodo === null
     ) {
       this.alert(' ', 'Todos los campos son obligatorios', 3);
     } else {
       if (
-        this.correo.includes('@') === false &&
-        this.correo.includes('.') === false
+        this.email.includes('@') === false &&
+        this.email.includes('.') === false
       ) {
         this.alert(' ', 'Correo no válido', 3);
-      } else if (this.cuotas > 99 || this.cuotas < 1) {
-        this.cuotas = undefined;
+      } else if (this.cantidadPeriodo > 99 || this.cantidadPeriodo < 1) {
+        this.cantidadPeriodo = undefined;
         this.alert(' ', 'Las cuotas deben estar entre 99 y 1', 3);
-      } else if (this.telefono.length !== 9) {
+      } else if (this.phone.length !== 9) {
         this.alert(' ', 'El teléfono debe tener 9 dígitos', 3);
       } else if (this.monto < 1) {
         this.alert(' ', 'Monto inválido', 3);
@@ -157,22 +157,24 @@ export class FormComponent implements OnInit {
         // console.log(demand);
         this.alert(' ', 'Solicitud enviada, revise su correo.', 1);
         this.TaskService.createDemand(demand).subscribe((viewDemand) => {
-          console.log(viewDemand);
+          // console.log(viewDemand);
         });
+        
         this.TaskService.sendEmail(demand).subscribe((viewDemand) => {
-          console.log(viewDemand);
+          // console.log(viewDemand);
         });
+
         // this.TaskService.createDemand(demand).subscribe();
         // this.TaskService.sendEmail(demand).subscribe();
 
         this.dni = undefined;
-        this.nombres = undefined;
+        this.nombre = undefined;
         this.apellidos = undefined;
-        this.telefono = undefined;
-        this.correo = undefined;
+        this.phone = undefined;
+        this.email = undefined;
         this.monto = undefined;
         this.periodo = undefined;
-        this.cuotas = undefined;
+        this.cantidadPeriodo = undefined;
       }
     }
   }
@@ -183,5 +185,5 @@ export class FormComponent implements OnInit {
   currentDay = this.currentDate.getDate();
 
   today = `${this.currentDay}/${this.currentMonth + 1}/${this.currentYear}`;
-  periodos = ['Dias', 'Meses', 'Trimestral', 'Anual'];
+  periodos = ['DIARIO', 'MENSUAL', 'TRIMESTRAL', 'SEMESTRAL'];
 }

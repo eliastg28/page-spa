@@ -1,10 +1,10 @@
 export interface Demand {
     dni: string;
-    nombres: string;
+    nombre: string;
     apellidos: string;
-    telefono: string;
-    correo: string;
+    phone: string;
+    email: string;
     monto: number;
     periodo: string;
-    cuotas: number;
+    cantidadPeriodo: number;
 }

@@ -36,8 +36,8 @@
       <input
         class="form-control"
         type="text"
-        [(ngModel)]="nombres"
-        name="nombres"
+        [(ngModel)]="nombre"
+        name="nombre"
         readonly
       />
     </div>
@@ -59,8 +59,8 @@
         class="form-control"
         type="text"
         placeholder="Digite su teléfono"
-        [(ngModel)]="telefono"
-        name="telefono"
+        [(ngModel)]="phone"
+        name="phone"
         (input)="inputValidator($event)"
         maxlength="9"
       />
@@ -74,8 +74,8 @@
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
         placeholder="Digite su correo"
-        [(ngModel)]="correo"
-        name="correo"
+        [(ngModel)]="email"
+        name="email"
       />
     </div>
 
@@ -122,8 +122,8 @@
         min="0"
         max="99"
         value="0"
-        [(ngModel)]="cuotas"
-        name="cuotas"
+        [(ngModel)]="cantidadPeriodo"
+        name="cantidadPeriodo"
       />
     </div>
 
